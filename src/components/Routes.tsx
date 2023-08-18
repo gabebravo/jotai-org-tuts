@@ -1,6 +1,7 @@
 import { Switch, Route } from 'wouter';
 import Counter from './Counter';
 import Home from './Home';
+import ImmerComponent from './ImmerAtom';
 
 const AllRoutes = () => (
   <Switch>
@@ -9,6 +10,9 @@ const AllRoutes = () => (
     </Route>
     <Route path="/counter">
       <Counter />
+    </Route>
+    <Route path="/jotai-immer">
+      <ImmerComponent />
     </Route>
   </Switch>
 );

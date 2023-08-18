@@ -23,6 +23,20 @@ const JotaiAsync = () => {
         <p>This is a simple state counter to prove the Jotai setup</p>
       </div>
       <hr />
+      <div>
+        <h3>
+          <Link href={`/jotai-immer`}>
+            <a>Jotai Immer : useImmerAtom</a>
+          </Link>
+        </h3>
+        <p>
+          Allows to overwrite a value in a complex data structure without
+          spreads, etc. Immer makes a copy and the useImmerAtom util allows for
+          mutating the copy while not causing side effects on the original
+          value.
+        </p>
+      </div>
+      <hr />
     </div>
   );
 };
