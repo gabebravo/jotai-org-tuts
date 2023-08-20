@@ -8,6 +8,8 @@ const root = css`
   }
 `;
 
+// document.body.style.backgroundColor = 'red';
+
 const JotaiAsync = () => {
   return (
     <div css={root}>
@@ -32,9 +34,17 @@ const JotaiAsync = () => {
         <p>
           Allows to overwrite a value in a complex data structure without
           spreads, etc. Immer makes a copy and the useImmerAtom util allows for
-          mutating the copy while not causing side effects on the original
-          value.
+          mutating the copy while not causing side effects on the original value
         </p>
+      </div>
+      <hr />
+      <div>
+        <h3>
+          <Link href={`/counter-provider`}>
+            <a>Counter : Jotai Provider</a>
+          </Link>
+        </h3>
+        <p>This shows how a Jotai Provider creates its own context</p>
       </div>
       <hr />
     </div>
