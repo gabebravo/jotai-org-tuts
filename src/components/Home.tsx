@@ -1,6 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { useAtom } from 'jotai';
 import { Link } from 'wouter';
+import { theme } from '../state/themeState';
+import { useEffect } from 'react';
 
 const root = css`
   a {
@@ -8,11 +11,25 @@ const root = css`
   }
 `;
 
-// document.body.style.backgroundColor = 'red';
-
 const JotaiAsync = () => {
+  const [appTheme, setAppTheme] = useAtom(theme);
+  const handleClick = () =>
+    setAppTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+
+  useEffect(() => {
+    document.body.style.backgroundColor =
+      appTheme === 'light' ? '#FFF' : '#000';
+    document.body.style.color = appTheme === 'light' ? '#000' : '#FFF';
+  }, [appTheme]);
+
   return (
     <div css={root}>
+      <div>
+        <h5>Theme switcher</h5>
+        <button style={{ textTransform: 'uppercase' }} onClick={handleClick}>
+          {appTheme}
+        </button>
+      </div>
       <div>
         <h1>Jotai Org Tutorials</h1>
       </div>

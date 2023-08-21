@@ -1,5 +1,6 @@
-import { atom } from 'jotai';
 import { useImmerAtom } from 'jotai-immer';
+import { atomWithReset, useResetAtom } from 'jotai/utils';
+import { useEffect } from 'react';
 
 const dataStruct = {
   aL1: [
@@ -15,11 +16,18 @@ const dataStruct = {
 };
 
 // data atom
-const normalAtom = atom(dataStruct);
+const normalAtom = atomWithReset(dataStruct);
 
 const ImmerComponent = () => {
   // All three below enjoys the new write function
   const [normal, setNormalAtom] = useImmerAtom(normalAtom);
+  const resetAtom = useResetAtom(normalAtom);
+
+  // @ts-ignore
+  useEffect(() => {
+    // reset the atom back to default value upon unmount
+    return () => resetAtom();
+  }, []);
 
   const onClick = () => {
     setNormalAtom((p) => {
